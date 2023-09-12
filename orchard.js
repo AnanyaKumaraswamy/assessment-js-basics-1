@@ -50,8 +50,12 @@ const pinkPrice = .55
 */
 
 // CODE HERE
+let totalAcres = 0;
+for (let i=0; i<7; i++){
+    totalAcres = totalAcres + fujiAcres[i] + galaAcres[i] + pinkAcres[i] ;
+}
 
-
+console.log('Total Acres =', totalAcres);
 
 
 
@@ -69,7 +73,8 @@ const pinkPrice = .55
 
 // CODE HERE
 
-
+let averageDailyAcres = totalAcres / 7.0;
+console.log('Average number of acres picked per day= ',averageDailyAcres);
 
 
 
@@ -106,8 +111,11 @@ let acresLeft = 174
 let days = 0
 
 // CODE HERE
-
-
+while(acresLeft>0){
+    days = days + 1;
+    acresLeft = acresLeft - averageDailyAcres;
+}
+console.log('Days of work left: ', days);
 
 // PROBLEM 4
 
@@ -135,11 +143,19 @@ let days = 0
 
 // CODE HERE
 
-// let fujiTons =
-// let galaTons =
-// let pinkTons =
+ let fujiTons = fujiAcres.slice();
+ let galaTons = galaAcres.slice();
+let pinkTons = pinkAcres.slice();
 
+for (i=0; i<7; i++){
+    fujiTons[i] = fujiTons[i] * 6.5;
+    galaTons[i] = galaTons[i] * 6.5;
+    pinkTons[i] = pinkTons[i] * 6.5;
+}
 
+console.log('fujiTons = ', fujiTons);
+console.log('galaTons = ', galaTons);
+console.log('pinkTons = ', pinkTons);
 
 
 
@@ -162,12 +178,24 @@ let days = 0
 
 // CODE HERE 
 
-// let fujiPounds =
-// let galaPounds =
-// let pinkPounds =
+ let fujiPounds = 0;
+ let galaPounds = 0;
+ let pinkPounds = 0;
 
+for(i=0; i<7; i++){
+    fujiPounds = fujiPounds + fujiTons[i];
+    galaPounds = galaPounds + galaTons[i];
+    pinkPounds = pinkPounds + pinkTons[i];
+}
 
+fujiPounds = fujiPounds * 2000;
+console.log('Total number of fuji apples picked= ',fujiPounds, 'pounds');
 
+galaPounds = galaPounds * 2000;
+console.log('Total number of gala apples picked= ',galaPounds, 'pounds');
+
+pinkPounds = pinkPounds * 2000;
+console.log('Total number of pink apples picked= ',pinkPounds, 'pounds');
 
 
 
@@ -189,9 +217,12 @@ let days = 0
 
 // CODE HERE
 
-// let fujiProfit =
-// let galaProfit =
-// let pinkProfit =
+let fujiProfit = fujiPounds * fujiPrice ;
+console.log('Selling Price of Fuji apples= ', fujiProfit, 'cents');
+let galaProfit = galaPounds * galaPrice ;
+console.log('Selling Price of Gala apples= ', galaProfit, 'cents');
+let pinkProfit = pinkPounds * pinkPrice;
+console.log('Selling Price of Pink apples= ', pinkProfit, 'cents');
 
 
 
@@ -209,3 +240,5 @@ let days = 0
 */
 
 // CODE HERE
+let totalProfit = fujiProfit + galaProfit + pinkProfit;
+console.log('Total Profit = ',totalProfit , 'cents');
